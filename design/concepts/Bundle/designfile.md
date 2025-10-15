@@ -1,3 +1,5 @@
-I did not make any changes to the Bundle concept from the Assignment 2 version. This is because I believe that a bundle with an owner user, name, and members of list of items that can be created/deleted and modified (by adding or removing items) is all that the bundle concept needs in order to function.
+I made one change to the Bundle concept from the Assignment 2 version. 
+
+1. I added user parameters to the actions and added corresponding requirements to those actions to ensure that actions on Spaces can only be performed by the user who owns the Space. 
 
 There were no issues when implementing and testing this concept as well. 

@@ -11,12 +11,12 @@
     *   `createBundle (user: User, name: String): (bundle: Bundle)`
         *   **requires**: user exists, name is unique to user
         *   **effects**: creates and returns new bundle with name String and owner user with no members
-    *   `deleteBundle (bundle: Bundle)`
-        *   **requires**: bundle exists
+    *   `deleteBundle (user: User, bundle: Bundle)`
+        *   **requires**: bundle exists, bundle belongs to user
         *   **effects**: removes bundle from user's bundles
-    *   ``addItemToBundle (item: Item, bundle: Bundle)`
-        *   **requires**: item and bundle exist and have the same owner
+    *   ``addItemToBundle (user: User, item: Item, bundle: Bundle)`
+        *   **requires**: item and bundle exist, both belong to user
         *   **effects**: adds item to bundle
-    *   ``removeItemFromBundle(item: Item, bundle: Bundle)`
-        *   **requires**: item is in bundle's members
+    *   ``removeItemFromBundle(user: User, item: Item, bundle: Bundle)`
+        *   **requires**: item is in bundle's members, both item and bundle belong to user
         *   **effects**: removes item from bundle

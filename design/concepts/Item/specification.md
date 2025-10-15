@@ -12,9 +12,9 @@
     *   `createItem (user: User, name: String, description: String?, category: String?): (item: Item)`
         *   **requires**: user exists
         *   **effects**: creates and returns new Item belonging to user with name String and optional description and/or category String
-    *   `deleteItem (item: Item)`
-        *   **requires**: item exists
+    *   `deleteItem (user: User, item: Item)`
+        *   **requires**: item exists and belongs to user
         *   **effects**:: removes item
-    *   `updateItemDetails(item: Item, name: String?, description: String?, category: String?)`
-        *   **requires**: item exists
+    *   `updateItemDetails(user: User, item: Item, name: String?, description: String?, category: String?)`
+        *   **requires**: item exists and belongs to user
         *   **effects** updates item's name, description, and/or category

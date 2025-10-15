@@ -13,12 +13,12 @@
     *   `createSpace (user: User, name: String, spaceType: String, parent: Space): (space: Space)`
         *   **requires**: user exists, name unique among parent's children
         *   **effects**: creates and returns new Space with owner User, name String, spaceType String, and parent Space
-    *   `moveSpace (space: Space, newParent: Space)`
-        *   **requires**: space and newParent exist
+    *   `moveSpace (user: User, space: Space, newParent: Space)`
+        *   **requires**: space and newParent exist; both belong to user
         *   **effects**: changes space's parent to newParent
-    *   `renameSpace (space: Space, name: String)`
-        *   **requires**: space exists, name unique among space's parent's children
+    *   `renameSpace (user: User space: Space, name: String)`
+        *   **requires**: space exists, space belongs to user, name unique among space's parent's children
         *   **effects**: changes space's name to name
-    *   `deleteSpace (space: Space)`
-        *   **requires**: space's children set is empty
+    *   `deleteSpace (user: User, space: Space)`
+        *   **requires**: space's children set is empty, space belongs to user
         *   **effects**: deletes space from corresponding user's spaces

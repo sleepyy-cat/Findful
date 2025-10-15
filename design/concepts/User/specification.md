@@ -1,7 +1,7 @@
 # concept: User
 *   **concept**: User
 *   **purpose**: To uniquely identify and authenticate individuals for secure access to the application.
-*   **principle**: Each user registers with unique credentials (unique username and password) that authenticate their identity and authorize access to personal data and resources.
+*   **principle**: Each user registers with unique credentials (username and password) that authenticate their identity and authorize access to personal data and resources.
 *   **state**:
     *   A set of `Users` with
         *   an `username` of type `String`
