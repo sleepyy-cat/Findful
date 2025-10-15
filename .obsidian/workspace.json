@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "design/learning/exercise-0.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "exercise-0"
             }
           }
         ]
@@ -169,8 +169,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "60ccb8b74e272dda",
+  "active": "9b42b4503c7d88ad",
   "lastOpenFiles": [
-    "README.md"
+    "design/concepts/Bundle/testing.ts",
+    "design/concepts/Bundle/specification.md",
+    "design/concepts/Bundle/implementation.ts",
+    "design/concepts/Bundle/designfile.md",
+    "design/concepts/Bundle/console.md",
+    "design/concepts/Bundle",
+    "design/concepts/LocationLog/testing.ts",
+    "design/concepts/LocationLog/specification.md",
+    "design/concepts/LocationLog/implementation.ts",
+    "design/concepts/LocationLog/designfile.md",
+    "design/concepts/LocationLog/console.md",
+    "design/concepts/LocationLog",
+    "design/concepts/Item/testing.ts",
+    "design/concepts/Item/specification.md",
+    "design/concepts/Item/implementation.ts",
+    "design/concepts/Item/designfile.md",
+    "design/concepts/Item/console.md",
+    "design/concepts/Item",
+    "design/concepts/Space/testing.ts",
+    "design/concepts/Space/specification.md",
+    "design/concepts/Space/implementation.ts",
+    "design/concepts/Space/designfile.md",
+    "design/concepts/Space/console.md",
+    "design/concepts/User copy 4/specification.md",
+    "design/concepts/User copy 4/designfile.md",
+    "design/concepts/User copy 4/console.md",
+    "design/concepts/User copy 3/specification.md",
+    "design/concepts/User copy 3/designfile.md",
+    "design/concepts/User copy 3/console.md",
+    "design/concepts/User copy 2/specification.md",
+    "design/concepts/User copy 2/designfile.md",
+    "design/concepts/User copy 2/console.md",
+    "design/concepts/User copy/specification.md",
+    "design/concepts/User copy/designfile.md",
+    "design/concepts/User copy/console.md",
+    "design/concepts/testing.md"
   ]
 }
