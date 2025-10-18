@@ -11,9 +11,10 @@ export class Users {
     username: string,
     password: string,
   ): User | void {
+    // Check username uniqueness
     for (const user of this.users) {
       if (user.username == username) {
-        console.error("user with username already exists");
+        console.log("user with username already exists");
         return;
       }
     }
@@ -31,97 +32,40 @@ export class Users {
   ): void {
     for (const user of this.users) {
       if (user.username == username) {
+        // Username match, password match
         if (user.password == password) {
           console.log("success");
           return;
-        } else {
+        } // Username match, password mismatch
+        else {
           console.log("wrong password, try again");
           return;
         }
       }
     }
-    console.error("user not found");
+    // Username doesn't exist
+    console.log("user not found");
     return;
   }
 
-  //   deleteItem(item: Item): void {
-  //     this.items = this.items.filter((a) => a !== item);
-  //   }
+  getUserName(user: User): string {
+    return user.username;
+  }
 
-  //   getItemOwner(item: Item): string {
-  //     return item.owner;
-  //   }
+  getUsers(): User[] {
+    return this.users;
+  }
 
-  //   getItemName(item: Item): string {
-  //     return item.name;
-  //   }
+  getUsersString(): string[] {
+    const users: string[] = [];
+    for (const user of this.users) {
+      users.push(user.username);
+    }
+    return users;
+  }
 
-  //   getItemDescription(item: Item): string {
-  //     return item.description;
-  //   }
-
-  //   getItemTags(item: Item): string[] {
-  //     return item.tags;
-  //   }
-
-  //   updateItemDetails(
-  //     item: Item,
-  //     name?: string,
-  //     description = "",
-  //     tags = [],
-  //   ): void {
-  //     if (name) {
-  //       item.name = name;
-  //     }
-  //     if (description) {
-  //       item.description = description;
-  //     }
-  //     if (name) {
-  //       item.tags = tags;
-  //     }
-  //   }
-
-  //   getItems(): Item[] {
-  //     const items: Item[] = [];
-  //     for (const item of this.items) {
-  //       items.push(item);
-  //     }
-  //     return items;
-  //   }
-
-  //   getItemsString(): string[] {
-  //     const items: string[] = [];
-  //     for (const item of this.items) {
-  //       items.push(item.name);
-  //     }
-  //     return items;
-  //   }
-
-  //   itemToString(item: Item): string {
-  //     const tags = "[" + item.tags.join(" ") + "]";
-  //     return "{owner: " + item.owner + ", name: " + item.name +
-  //       ", description: " +
-  //       item.description + ", tags: " + tags + "}";
-  //   }
-
-  //   itemsToString(items: Item[]): string {
-  //     let result = "";
-  //     for (const item of items) {
-  //       result = result + this.itemToString(item) + ", ";
-  //     }
-  //     result = result.slice(0, result.length - 2);
-  //     return "[" + result + "]";
-  //   }
-
-  //   equals(item1: Item, item2: Item): boolean {
-  //     let tags_equal = true;
-  //     for (let i = 0; i < item1.tags.length; i++) {
-  //       if (item1.tags[i] !== item2.tags[i]) {
-  //         tags_equal = false;
-  //         break;
-  //       }
-  //     }
-  //     return (item1.owner === item2.owner && item1.name === item2.name &&
-  //       item1.description === item2.description && tags_equal);
-  //   }
+  equals(user1: User, user2: User): boolean {
+    return (user1.username == user2.username &&
+      user1.password == user2.password);
+  }
 }

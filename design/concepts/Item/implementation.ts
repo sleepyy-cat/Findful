@@ -75,11 +75,7 @@ export class Items {
   }
 
   getItems(): Item[] {
-    const items: Item[] = [];
-    for (const item of this.items) {
-      items.push(item);
-    }
-    return items;
+    return this.items;
   }
 
   getItemsString(): string[] {

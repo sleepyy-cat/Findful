@@ -4,366 +4,146 @@
  * Demonstrates all user actions
  */
 
-import { User, Users } from "./implementation.ts";
+import { Users } from "../User/implementation.ts";
 
 /**
- * Load configuration from config.json
+ * Test case 1: Register unique user
+ * Demonstrates successfully registering a user if the username is unique
  */
-function loadConfig(): Config {
-  try {
-    const config = require("../config.json");
-    return config;
-  } catch (error) {
-    console.error(
-      "❌ Error loading config.json. Please ensure it exists with your API key.",
-    );
-    console.error("Error details:", (error as Error).message);
-    process.exit(1);
-  }
-}
-
-/**
- * Test case 1:
- * Demonstrates successfully looking up an item if the query is an exact match
- */
-export async function testManualItemSearch(): Promise<void> {
-  const config = loadConfig();
-  const llm = new GeminiLLM(config);
-  console.log("\n🧪 TEST CASE 1: Manual item lookup");
+export function testValidRegister(): void {
+  console.log("\n🧪 TEST CASE 1: Register unique user");
   console.log("==================================");
 
-  const user_items = new Items();
+  const users_test = new Users();
 
-  // Add an item
-  console.log("📝 Adding item...");
-  const detergent = user_items.createItem("Hanna", "detergent");
-  if (detergent !== undefined) {
-    console.log("initial item is: " + user_items.itemToString(detergent));
-  }
-
-  // Manually lookup an item
-  console.log("⏰ Manually looking up items...");
-  const items = await user_items.lookupItem("detergent", llm);
-  const correct_results = user_items.getItems();
-  let mismatch = false;
-  console.assert(items.length == correct_results.length);
-  for (let i = 0; i < items.length; i++) {
-    if (items[i] !== correct_results[i]) {
-      mismatch = true;
-      break;
-    }
-  }
-  console.assert(!mismatch, "results are a mismatch");
-  if (!mismatch) {
-    console.log("success!");
-    console.log("found item: " + user_items.itemToString(correct_results[0]));
-  } else {
-    console.log("error");
-  }
-}
-
-/**
- * Test case 2: LLM Lookup: Clear-cut Items
- * Demonstrates LLM item lookup with item names containing keyword (but being more than keyword),
- * when all incorrect items have no similarity to user input
- */
-export async function testLLMLookupNormal(): Promise<void> {
-  console.log("\n🧪 TEST CASE 2: LLM Lookup: Clear-cut Items");
-  console.log("========================================");
-
-  const user_items = new Items();
-  const config = loadConfig();
-  const llm = new GeminiLLM(config);
-
-  // Add some items (similar to manual test but different)
-  console.log("📝 Adding items...");
-  const cat = user_items.createItem("Hanna", "cat plushy");
-  const dog = user_items.createItem("Hanna", "dog plushy");
-  const pig = user_items.createItem("Hanna", "pig plushy");
-  user_items.createItem("Hanna", "computer");
-  user_items.createItem("Hanna", "desk lamp");
-
-  // Display initial items (all added)
-  console.log("\n📋 Initial state - all items:");
-  console.log(
-    "initial items are: " + user_items.itemsToString(user_items.getItems()),
-  );
-
-  // Let the LLM lookup items
-  const result_items = await user_items.lookupItem("plushy", llm);
-  let correct_results: Item[] = [];
-  if (cat !== undefined && dog !== undefined && pig !== undefined) {
-    correct_results = [cat, dog, pig];
-  }
-
-  // Display the final items
-  console.log("\n📅 Final results of LLM search:");
-  let real_items = true;
-  for (let i = 0; i < result_items.length; i++) {
-    if (!(user_items.equals(result_items[i], correct_results[i]))) {
-      real_items = false;
-    }
-  }
-  console.assert(real_items, "hallucinated items");
-  let mismatch = false;
-  console.assert(
-    result_items.length == correct_results.length,
-    "different lengths",
-  );
-  for (let i = 0; i < result_items.length; i++) {
-    if (!(user_items.equals(result_items[i], correct_results[i]))) {
-      mismatch = true;
-      break;
-    }
-  }
-  console.assert(!mismatch, "results are a mismatch");
-  if (!mismatch) {
-    console.log("success!");
-    const results = [];
-    for (const item of result_items) {
-      results.push(user_items.getItemName(item));
-    }
-    const string_results = String(results);
-    console.log("found item(s): " + string_results);
-  } else {
-    console.log("error");
-  }
-}
-
-/**
- * Test case 3: LLM Lookup: Mixed items
- * Demonstrates LLM item lookup with item names exactly matching keyword,
- * when items that are only partial matches shouldn't be returned
- */
-export async function testLLMLookupMixed(): Promise<void> {
-  console.log("\n🧪 TEST CASE 3: LLM Lookup: Mixed items");
-  console.log("=================================");
-
-  const user_items = new Items();
-  const config = loadConfig();
-  const llm = new GeminiLLM(config);
-
-  // Add some items (similar to manual test but different)
-  console.log("📝 Adding items...");
-  const cat = user_items.createItem("Hanna", "cat plushy");
-  user_items.createItem("Hanna", "spider plushy");
-  const dog = user_items.createItem("Hanna", "dog plushy");
-  user_items.createItem("Hanna", "snake plushy");
-
-  // Display initial items (all added)
-  console.log("\n📋 Initial state - all items:");
-  if (cat !== undefined && dog !== undefined) {
-    console.log(
-      "initial items are: " + user_items.itemsToString(user_items.getItems()),
+  // Register a user
+  console.log("📝 Registering user...");
+  const user = users_test.registerUser("hanna", "asdf123");
+  if (user !== undefined) {
+    // Check that user has been added successfully
+    console.assert(
+      users_test.getUsersString().includes(users_test.getUserName(user)),
     );
-  }
-  // Let the LLM lookup items
-  const result_items = await user_items.lookupItem("mammal plushy", llm);
-  let correct_results: Item[] = [];
-  if (cat !== undefined && dog !== undefined) {
-    correct_results = [cat, dog];
-  }
-
-  // Display the final items
-  console.log("\n📅 Final results of LLM search:");
-  let real_items = true;
-  for (let i = 0; i < result_items.length; i++) {
-    if (!(user_items.equals(result_items[i], correct_results[i]))) {
-      real_items = false;
-    }
-  }
-  console.assert(real_items, "hallucinated items");
-  let mismatch = false;
-  console.assert(
-    result_items.length == correct_results.length,
-    "different lengths",
-  );
-  for (let i = 0; i < result_items.length; i++) {
-    if (!(user_items.equals(result_items[i], correct_results[i]))) {
-      mismatch = true;
-      break;
-    }
-  }
-  console.assert(!mismatch, "results are a mismatch");
-  if (!mismatch) {
-    console.log("success!");
-    const results = [];
-    for (const item of result_items) {
-      results.push(user_items.getItemName(item));
-    }
-    const string_results = String(results);
-    console.log("found item(s): " + string_results);
-  } else {
-    console.log("error");
+    console.log(
+      "successfully registered user: " + users_test.getUserName(user),
+    );
+    return;
   }
 }
 
 /**
- * Test case 4: LLM Lookup: Typoed items
- * Demonstrates LLM item lookup with typoes in user input
+ * Test case 2: Register duplicate user
+ * Demonstrates failing to register a user if the username is not unique
  */
-export async function testLLMLookupTypoes(): Promise<void> {
-  console.log("\n🧪 TEST CASE 4: LLM Lookup: Typoed Items");
-  console.log("=================================");
+export function testInvalidRegister(): void {
+  console.log("\n🧪 TEST CASE 2: Register duplicate user");
+  console.log("==================================");
 
-  const user_items = new Items();
-  const config = loadConfig();
-  const llm = new GeminiLLM(config);
+  const users_test = new Users();
 
-  // Add some items (similar to manual test but different)
-  console.log("📝 Adding items...");
-  const computer = user_items.createItem("Hanna", "computer");
-  user_items.createItem("Hanna", "cat plushy");
-  const phone = user_items.createItem("Hanna", "phone");
-  user_items.createItem("Hanna", "hand sanitizer");
-  user_items.createItem("Hanna", "photo");
-
-  // Display initial items (all added)
-  console.log("\n📋 Initial state - all items:");
-  if (computer !== undefined && phone !== undefined) {
-    console.log(
-      "initial items are: " + user_items.itemsToString(user_items.getItems()),
+  // Register a user
+  console.log("📝 Registering user...");
+  const first_user = users_test.registerUser("hanna", "asdf123");
+  if (first_user !== undefined) {
+    // Try to register another user with the same username
+    console.log("Attempting to register duplicate user...");
+    const second_user = users_test.registerUser("hanna", "asdf321");
+    // Check that second user was not added
+    console.assert(
+      second_user === undefined,
+      "duplicate user was incorrectly registered",
     );
+    console.assert(users_test.getUsers().length == 1, "wrong number of users");
   }
-  // Let the LLM lookup items
-  const result_items = await user_items.lookupItem("ecletronisc", llm);
-  let correct_results: Item[] = [];
-  if (computer !== undefined && phone !== undefined) {
-    correct_results = [computer, phone];
-  }
+  return;
+}
 
-  // Display the final items
-  console.log("\n📅 Final results of LLM search:");
-  let real_items = true;
-  for (let i = 0; i < result_items.length; i++) {
-    if (!(user_items.equals(result_items[i], correct_results[i]))) {
-      real_items = false;
-    }
-  }
-  console.assert(real_items, "hallucinated items");
-  let mismatch = false;
-  console.assert(
-    result_items.length == correct_results.length,
-    "different lengths",
-  );
-  for (let i = 0; i < result_items.length; i++) {
-    if (!(user_items.equals(result_items[i], correct_results[i]))) {
-      mismatch = true;
-      break;
-    }
-  }
-  console.assert(!mismatch, "results are a mismatch");
-  if (!mismatch) {
-    console.log("success!");
-    const results = [];
-    for (const item of result_items) {
-      results.push(user_items.getItemName(item));
-    }
-    const string_results = String(results);
-    console.log("found item(s): " + string_results);
-  } else {
-    console.log("error");
+/**
+ * Test case 3: Authenticate user correctly
+ * Demonstrates successfully authenticating a user if the username and password combination is valid
+ */
+export function testValidAuthentication(): void {
+  console.log("\n🧪 TEST CASE 3: Authenticate user correctly");
+  console.log("==================================");
+
+  const users_test = new Users();
+
+  // Register a user
+  console.log("📝 Registering user...");
+  const _ = users_test.registerUser("hanna", "asdf123");
+
+  // Try to authenticate with correct username/password
+  try {
+    users_test.authenticateUser("hanna", "asdf123");
+  } catch (_error) {
+    console.log("❌ authentication function incorrect");
   }
 }
 
 /**
- * Test case 5: LLM Lookup: Fuzzy Keyword Searches
- * Demonstrates LLM item lookup with items matching user input semantically but not exact wording
+ * Test case 4: Authenticate user incorrectly
+ * Demonstrates failing to authenticate a user if the username and password combination is invalid
  */
-export async function testLLMLookupFuzzy(): Promise<void> {
-  console.log("\n🧪 TEST CASE 5: LLM Lookup: Fuzzy Keyword Searches");
-  console.log("=================================");
+export function testInvalidAuthentication(): void {
+  console.log("\n🧪 TEST CASE 4: Authenticate user incorrectly");
+  console.log("==================================");
 
-  const user_items = new Items();
-  const config = loadConfig();
-  const llm = new GeminiLLM(config);
+  const users_test = new Users();
 
-  // Add some items (similar to manual test but different)
-  console.log("📝 Adding items...");
-  const cat = user_items.createItem("Hanna", "cat plushy");
-  user_items.createItem("Hanna", "lamp");
-  const dog = user_items.createItem("Hanna", "dog pillow");
-  user_items.createItem("Hanna", "snake cage");
+  // Register a user
+  console.log("📝 Registering user...");
+  const _ = users_test.registerUser("hanna", "asdf123");
+  // Try to authenticate with incorrect username/password
+  console.log("Attempting to authenticate with incorrect username/password");
+  users_test.authenticateUser("hanna", "asdf321");
+}
 
-  // Display initial items (all added)
-  console.log("\n📋 Initial state - all items:");
-  if (cat !== undefined && dog !== undefined) {
-    console.log(
-      "initial items are: " + user_items.itemsToString(user_items.getItems()),
-    );
-  }
-  // Let the LLM lookup items
-  const result_items = await user_items.lookupItem("stuffed animal", llm);
-  let correct_results: Item[] = [];
-  if (cat !== undefined && dog !== undefined) {
-    correct_results = [cat, dog];
-  }
+/**
+ * Test case 5: Authenticate invalid user
+ * Demonstrates failing to authenticate a user if the username doesn't exist
+ */
+export function testNonexistentUserAuthentication(): void {
+  console.log("\n🧪 TEST CASE 5: Authenticate invalid user");
+  console.log("==================================");
 
-  // Display the final items
-  console.log("\n📅 Final results of LLM search:");
-  let real_items = true;
-  for (let i = 0; i < result_items.length; i++) {
-    if (!(user_items.equals(result_items[i], correct_results[i]))) {
-      real_items = false;
-    }
-  }
-  console.assert(real_items, "hallucinated items");
-  let mismatch = false;
-  console.assert(
-    result_items.length == correct_results.length,
-    "different lengths",
-  );
-  for (let i = 0; i < result_items.length; i++) {
-    if (!(user_items.equals(result_items[i], correct_results[i]))) {
-      mismatch = true;
-      break;
-    }
-  }
-  console.assert(!mismatch, "results are a mismatch");
-  if (!mismatch) {
-    console.log("success!");
-    const results = [];
-    for (const item of result_items) {
-      results.push(user_items.getItemName(item));
-    }
-    const string_results = String(results);
-    console.log("found item(s): " + string_results);
-  } else {
-    console.log("error");
-  }
+  const users_test = new Users();
+
+  // Register a user
+  console.log("📝 Registering user...");
+  const _ = users_test.registerUser("hanna", "asdf123");
+
+  // Try to authenticate with invalid user
+  console.log("Attempting to authenticate with invalid user");
+  users_test.authenticateUser("cat", "asdf321");
 }
 
 /**
  * Main function to run all test cases
  */
-async function main(): Promise<void> {
-  console.log("🎓 Item Test Suite");
+function main(): void {
+  console.log("🎓 User Test Suite");
   console.log("========================\n");
 
   try {
-    // Run manual item lookup test
-    await testManualItemSearch();
+    // Run register unique user test
+    testValidRegister();
 
-    // Run LLM Lookup: Clear-cut Items test
-    await testLLMLookupNormal();
+    // Run register duplicate user test
+    testInvalidRegister();
 
-    // Run LLM Lookup: Mixed Items test
-    await testLLMLookupMixed();
+    // Run authenticate user correctly test
+    testValidAuthentication();
 
-    // Run LLM Lookup: Typoed Items test
-    await testLLMLookupTypoes();
+    // Run authenticate user incorrectly test
+    testInvalidAuthentication();
 
-    // Run LLM Lookup: Fuzzy Keyword Searchers test
-    await testLLMLookupFuzzy();
+    // Run authenticate invalid user test
+    testNonexistentUserAuthentication();
 
     console.log("\n🎉 All test cases completed successfully!");
   } catch (error) {
     console.error("❌ Test error:", (error as Error).message);
-    process.exit(1);
   }
 }
 
-// Run the tests if this file is executed directly
-if (require.main === module) {
-  main();
-}
+main();
