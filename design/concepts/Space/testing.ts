@@ -461,7 +461,7 @@ export function testInvalidDeleteSpace(): void {
  * Main function to run all test cases
  */
 function main(): void {
-  console.log("🎓 User Test Suite");
+  console.log("🎓 Space Test Suite");
   console.log("========================\n");
 
   try {
