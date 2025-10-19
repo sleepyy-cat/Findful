@@ -140,6 +140,7 @@ export function testValidSpaceMove(): void {
         space1,
       );
       if (space3) {
+        console.log("📝 Moving space...");
         spaces_test.moveSpace(user1, space3, space2);
         const space1_children = spaces_test.getSpaceChildren(space1);
         if (space1_children) {
@@ -293,6 +294,7 @@ export function testValidRenameSpace(): void {
         space1,
       );
       if (space2 && space3) {
+        console.log("📝 Renaming space...");
         spaces_test.renameSpace(user1, space3, "drawer 3");
         const space1_children_string = spaces_test.getSpaceChildrenString(
           space1,
@@ -398,6 +400,7 @@ export function testValidDeleteSpace(): void {
       );
       if (space2) {
         // Delete second space (which is empty)
+        console.log("📝 Deleting space...");
         spaces_test.deleteSpace(user1, space2);
         const space1_children_string = spaces_test.getSpaceChildrenString(
           space1,
@@ -443,7 +446,8 @@ export function testInvalidDeleteSpace(): void {
         space1,
       );
       if (space2) {
-        // Delete first space (which is not empty)
+        // Trying to delete first space (which is not empty)
+        console.log("Attempting to delete non-empty space...");
         spaces_test.deleteSpace(user1, space1);
         const spaces = spaces_test.getSpaces();
         if (spaces) {

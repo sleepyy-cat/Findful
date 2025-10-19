@@ -69,11 +69,11 @@ export function testValidAuthentication(): void {
   const users_test = new Users();
 
   // Register a user
-  console.log("📝 Registering user...");
   const _ = users_test.registerUser("hanna", "asdf123");
 
   // Try to authenticate with correct username/password
   try {
+    console.log("📝 Authenticating user...");
     users_test.authenticateUser("hanna", "asdf123");
   } catch (_error) {
     console.log("❌ authentication function incorrect");
@@ -91,7 +91,6 @@ export function testInvalidAuthentication(): void {
   const users_test = new Users();
 
   // Register a user
-  console.log("📝 Registering user...");
   const _ = users_test.registerUser("hanna", "asdf123");
   // Try to authenticate with incorrect username/password
   console.log("Attempting to authenticate with incorrect username/password");
@@ -109,7 +108,6 @@ export function testNonexistentUserAuthentication(): void {
   const users_test = new Users();
 
   // Register a user
-  console.log("📝 Registering user...");
   const _ = users_test.registerUser("hanna", "asdf123");
 
   // Try to authenticate with invalid user

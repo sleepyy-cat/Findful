@@ -102,6 +102,7 @@ export function testValidDeleteItem(): void {
       "clothes",
     );
     if (item) {
+      console.log("📝 Deleting item...");
       items_test.deleteItem(user1, item);
       const items = items_test.getItemsByUser(user1);
       if (items) {
@@ -129,7 +130,6 @@ export function testInvalidDeleteNonexistentItem(): void {
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item
-  console.log("📝 Adding item...");
   if (user1) {
     const item = items_test.createItem(
       user1,
@@ -211,6 +211,7 @@ export function testValidUpdateItem(): void {
       "clothes",
     );
     if (item) {
+      console.log("📝 Updating item...");
       items_test.updateItemDetails(
         user1,
         item,

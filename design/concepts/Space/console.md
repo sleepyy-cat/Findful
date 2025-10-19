@@ -1,0 +1,63 @@
+🎓 Space Test Suite
+========================
+
+🧪 TEST CASE 1: Create unique space
+==================================
+📝 Adding space...
+successfully created space: dresser
+
+🧪 TEST CASE 2: Create duplicate space (has parent)
+==================================
+📝 Adding space...
+Attempting to create duplicate space...
+space with name already exists
+
+🧪 TEST CASE 3: Create duplicate space (has no parent)
+==================================
+📝 Adding space...
+Attempting to create duplicate space...
+space with name already exists
+
+🧪 TEST CASE 4: Move unique space
+==================================
+📝 Adding spaces...
+📝 Moving space...
+Space was successfully moved to: shelf
+
+🧪 TEST CASE 5: Move duplicate space
+==================================
+📝 Adding spaces...
+Attempting to move space into new space with duplicate name...
+space with name already exists among new parent's children
+
+🧪 TEST CASE 6: Move space (wrong owner)
+==================================
+📝 Adding spaces...
+Attempting to move space into new space through wrong user...
+space or newParent does not belong to owner
+
+🧪 TEST CASE 7: Rename unique space
+==================================
+📝 Adding space...
+📝 Renaming space...
+space was successfully renamed to: drawer 3
+
+🧪 TEST CASE 8: Rename duplicate space
+==================================
+📝 Adding space...
+Attempting to rename space to duplicate name...
+cannot rename space: its parent already has a space with that name
+
+🧪 TEST CASE 9: Delete empty space
+==================================
+📝 Adding space...
+📝 Deleting space...
+space was successfully deleted
+
+🧪 TEST CASE 10: Delete non-empty space
+==================================
+📝 Adding space...
+Attempting to delete non-empty space...
+cannot delete a non-empty space
+
+🎉 All test cases completed successfully!
