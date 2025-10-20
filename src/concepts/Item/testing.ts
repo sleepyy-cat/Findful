@@ -4,8 +4,8 @@
  * Demonstrates all item actions
  */
 
-import { Users } from "../User/implementation.ts";
-import { Item, Items } from "./implementation.ts";
+import { Users } from "@concepts/User/implementation.ts";
+import { Item, Items } from "@concepts/Item/implementation.ts";
 
 /**
  * Test case 1: Create unique item

@@ -4,8 +4,8 @@
  * Demonstrates all space actions
  */
 
-import { Users } from "../User/implementation.ts";
-import { Spaces } from "./implementation.ts";
+import { Users } from "@concepts/User/implementation.ts";
+import { Spaces } from "@concepts/Space/implementation.ts";
 
 /**
  * Test case 1: Create unique space

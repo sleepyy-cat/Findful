@@ -4,10 +4,10 @@
  * Demonstrates all locationLog actions
  */
 
-import { Users } from "../User/implementation.ts";
+import { Users } from "@concepts/User/implementation.ts";
 import { Items } from "../Item/implementation.ts";
-import { Spaces } from "../Space/implementation.ts";
-import { LocationLogs } from "./implementation.ts";
+import { Spaces } from "@concepts/Space/implementation.ts";
+import { LocationLogs } from "@concepts/LocationLog/implementation.ts";
 
 /**
  * Test case 1: Create unique locationLog

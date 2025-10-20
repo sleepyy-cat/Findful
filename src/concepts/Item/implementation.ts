@@ -1,4 +1,4 @@
-import { User } from "../User/implementation.ts";
+import { User } from "@concepts/User/implementation.ts";
 
 // A single item
 export interface Item {

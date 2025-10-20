@@ -1,5 +1,5 @@
 import { Item } from "../Item/implementation.ts";
-import { Space } from "../Space/implementation.ts";
+import { Space } from "@concepts/Space/implementation.ts";
 
 // A single locationlog
 export interface LocationLog {

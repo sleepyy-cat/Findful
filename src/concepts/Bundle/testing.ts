@@ -4,9 +4,9 @@
  * Demonstrates all bundle actions
  */
 
-import { Users } from "../User/implementation.ts";
-import { Items } from "../Item/implementation.ts";
-import { Bundles } from "./implementation.ts";
+import { Users } from "@concepts/User/implementation.ts";
+import { Items } from "@concepts/Item/implementation.ts";
+import { Bundles } from "@concepts/Bundle/implementation.ts";
 
 /**
  * Test case 1: Create unique bundle

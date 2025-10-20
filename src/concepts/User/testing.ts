@@ -4,7 +4,7 @@
  * Demonstrates all user actions
  */
 
-import { Users } from "../User/implementation.ts";
+import { Users } from "@concepts/User/implementation.ts";
 
 /**
  * Test case 1: Register unique user
