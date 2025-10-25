@@ -1,0 +1,82 @@
+---
+timestamp: 'Fri Oct 24 2025 15:36:09 GMT-0400 (Eastern Daylight Time)'
+parent: '[[..\20251024_153609.0917b28c.md]]'
+content_id: 1648210ebe042ffba3f2242d595935c9b1d8807fe7d2720315209af0f8665229
+---
+
+# file: src\concepts\User\UserConcept.ts
+
+```typescript
+// A single user
+export interface User {
+  username: string;
+  password: string;
+}
+
+export class Users {
+  private users: User[] = [];
+
+  registerUser(
+    username: string,
+    password: string,
+  ): User | void {
+    // Check username uniqueness
+    for (const user of this.users) {
+      if (user.username == username) {
+        console.log("user with username already exists");
+        return;
+      }
+    }
+    const user: User = {
+      username,
+      password,
+    };
+    this.users.push(user);
+    return user;
+  }
+
+  authenticateUser(
+    username: string,
+    password: string,
+  ): void {
+    for (const user of this.users) {
+      if (user.username == username) {
+        // Username match, password match
+        if (user.password == password) {
+          console.log("success");
+          return;
+        } // Username match, password mismatch
+        else {
+          console.log("wrong password, try again");
+          return;
+        }
+      }
+    }
+    // Username doesn't exist
+    console.log("user not found");
+    return;
+  }
+
+  getUserName(user: User): string {
+    return user.username;
+  }
+
+  getUsers(): User[] {
+    return this.users;
+  }
+
+  getUsersString(): string[] {
+    const users: string[] = [];
+    for (const user of this.users) {
+      users.push(user.username);
+    }
+    return users;
+  }
+
+  equals(user1: User, user2: User): boolean {
+    return (user1.username == user2.username &&
+      user1.password == user2.password);
+  }
+}
+
+```

@@ -32,8 +32,10 @@ async function main() {
   for await (
     const entry of walk(CONCEPTS_DIR, {
       maxDepth: 1,
-      includeDirs: true,
+      includeDirs: false,
       includeFiles: false,
+      exts: ["ts"],
+      match: [/Concept\.ts$/],
     })
   ) {
     if (entry.path === CONCEPTS_DIR) continue; // Skip the root directory
