@@ -1,4 +1,4 @@
-import { User } from "@concepts/User/implementation.ts";
+import { User } from "../User/UserConcept.ts";
 
 // A single space
 export interface Space {
@@ -9,7 +9,7 @@ export interface Space {
   children?: Space[];
 }
 
-export class Spaces {
+export default class Spaces {
   private spaces: Space[] = [];
   createSpace(
     owner: User,

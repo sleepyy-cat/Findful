@@ -1,4 +1,4 @@
-import { User } from "@concepts/User/implementation.ts";
+import { User } from "../User/UserConcept.ts";
 
 // A single item
 export interface Item {
@@ -8,7 +8,7 @@ export interface Item {
   category: string;
 }
 
-export class Items {
+export default class Items {
   private items: Item[] = [];
 
   createItem(

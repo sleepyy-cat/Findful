@@ -1,5 +1,5 @@
-import { Item } from "../Item/implementation.ts";
-import { Space } from "@concepts/Space/implementation.ts";
+import { Item } from "../Item/ItemConcept.ts";
+import { Space } from "../Space/SpaceConcept.ts";
 
 // A single locationlog
 export interface LocationLog {
@@ -8,7 +8,7 @@ export interface LocationLog {
   locationHistory: Space[];
 }
 
-export class LocationLogs {
+export default class LocationLogs {
   private locationLogs: LocationLog[] = [];
 
   createLog(thisItem: Item, currentSpace: Space): LocationLog | void {

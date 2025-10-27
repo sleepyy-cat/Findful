@@ -1,5 +1,5 @@
-import { User } from "@concepts/User/implementation.ts";
-import { Item } from "@concepts/Item/implementation.ts";
+import { User } from "../User/UserConcept.ts";
+import { Item } from "../Item/ItemConcept.ts";
 
 // A single bundle
 export interface Bundle {
@@ -8,7 +8,7 @@ export interface Bundle {
   members: Item[];
 }
 
-export class Bundles {
+export default class Bundles {
   private bundles: Bundle[] = [];
 
   createBundle(user: User, name: string): Bundle | void {
