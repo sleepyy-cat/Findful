@@ -8,7 +8,7 @@ export interface LocationLog {
   locationHistory: Space[];
 }
 
-export default class LocationLogs {
+export default class LocationLogConcept {
   private locationLogs: LocationLog[] = [];
 
   createLog(thisItem: Item, currentSpace: Space): LocationLog | void {

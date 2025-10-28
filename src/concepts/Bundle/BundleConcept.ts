@@ -8,7 +8,7 @@ export interface Bundle {
   members: Item[];
 }
 
-export default class Bundles {
+export default class BundleConcept {
   private bundles: Bundle[] = [];
 
   createBundle(user: User, name: string): Bundle | void {

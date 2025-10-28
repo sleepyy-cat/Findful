@@ -4,10 +4,10 @@
  * Demonstrates all locationLog actions
  */
 
-import { Users } from "@concepts/User/implementation.ts";
-import { Items } from "../Item/implementation.ts";
-import { Spaces } from "@concepts/Space/implementation.ts";
-import { LocationLogs } from "@concepts/LocationLog/implementation.ts";
+import UserConcept from "../User/UserConcept.ts";
+import ItemConcept from "../Item/ItemConcept.ts";
+import SpaceConcept from "../Space/SpaceConcept.ts";
+import LocationLogConcept from "./LocationLogConcept.ts";
 
 /**
  * Test case 1: Create unique locationLog
@@ -17,10 +17,10 @@ export function testCreateUniqueLog(): void {
   console.log("\n🧪 TEST CASE 1: Create unique locationLog");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const spaces_test = new Spaces();
-  const logs_test = new LocationLogs();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const spaces_test = new SpaceConcept();
+  const logs_test = new LocationLogConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item and a space
@@ -60,10 +60,10 @@ export function testCreateDuplicateLog(): void {
   console.log("\n🧪 TEST CASE 2: Create duplicate locationLog");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const spaces_test = new Spaces();
-  const logs_test = new LocationLogs();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const spaces_test = new SpaceConcept();
+  const logs_test = new LocationLogConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item and two spaces
@@ -114,10 +114,10 @@ export function testCreateNoPermsLog(): void {
   console.log("\n🧪 TEST CASE 3: Create no perms locationLog");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const spaces_test = new Spaces();
-  const logs_test = new LocationLogs();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const spaces_test = new SpaceConcept();
+  const logs_test = new LocationLogConcept();
   // Register two users
   const user1 = users.registerUser("hanna", "asdf123");
   const user2 = users.registerUser("cat", "asdf321");
@@ -150,10 +150,10 @@ export function testPlaceItemNoLog(): void {
   console.log("\n🧪 TEST CASE 4: Place item, no existing log");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const spaces_test = new Spaces();
-  const logs_test = new LocationLogs();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const spaces_test = new SpaceConcept();
+  const logs_test = new LocationLogConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item and space
@@ -196,10 +196,10 @@ export function testPlaceItemCurrentLocation(): void {
   );
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const spaces_test = new Spaces();
-  const logs_test = new LocationLogs();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const spaces_test = new SpaceConcept();
+  const logs_test = new LocationLogConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item and a space
@@ -245,10 +245,10 @@ export function testPlaceItemDifferentLocation(): void {
   console.log("\n🧪 TEST CASE 6: Place item, different from current location");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const spaces_test = new Spaces();
-  const logs_test = new LocationLogs();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const spaces_test = new SpaceConcept();
+  const logs_test = new LocationLogConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item and two spaces
@@ -295,10 +295,10 @@ export function testValidDeleteLog(): void {
   console.log("\n🧪 TEST CASE 7: Delete existing LocationLog");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const spaces_test = new Spaces();
-  const logs_test = new LocationLogs();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const spaces_test = new SpaceConcept();
+  const logs_test = new LocationLogConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item and a space
@@ -339,10 +339,10 @@ export function testInvalidDeleteNonexistentLog(): void {
   );
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const spaces_test = new Spaces();
-  const logs_test = new LocationLogs();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const spaces_test = new SpaceConcept();
+  const logs_test = new LocationLogConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create two items and a space

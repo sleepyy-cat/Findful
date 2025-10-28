@@ -8,7 +8,7 @@ export interface Item {
   category: string;
 }
 
-export default class Items {
+export default class ItemConcept {
   private items: Item[] = [];
 
   createItem(

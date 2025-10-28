@@ -4,8 +4,8 @@
  * Demonstrates all space actions
  */
 
-import { Users } from "@concepts/User/implementation.ts";
-import { Spaces } from "@concepts/Space/implementation.ts";
+import UserConcept from "../User/UserConcept.ts";
+import SpaceConcept from "./SpaceConcept.ts";
 
 /**
  * Test case 1: Create unique space
@@ -15,8 +15,8 @@ export function testCreateValidSpace(): void {
   console.log("\n🧪 TEST CASE 1: Create unique space");
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create a space
@@ -43,8 +43,8 @@ export function testCreateInvalidSpaceParent(): void {
   console.log("\n🧪 TEST CASE 2: Create duplicate space (has parent)");
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create a space and a child within the space
@@ -89,8 +89,8 @@ export function testCreateInvalidSpaceNoParent(): void {
   console.log("\n🧪 TEST CASE 3: Create duplicate space (has no parent)");
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create a space
@@ -122,8 +122,8 @@ export function testValidSpaceMove(): void {
   console.log("\n🧪 TEST CASE 4: Move unique space");
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create two spaces
@@ -175,8 +175,8 @@ export function testInvalidSpaceMoveDuplicate(): void {
   );
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create two spaces
@@ -227,8 +227,8 @@ export function testInvalidSpaceMoveWrongOwner(): void {
   );
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register two users
   const user1 = users.registerUser("hanna", "asdf123");
   const user2 = users.registerUser("cat", "asdf321");
@@ -271,8 +271,8 @@ export function testValidRenameSpace(): void {
   console.log("\n🧪 TEST CASE 7: Rename unique space");
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create space
@@ -328,8 +328,8 @@ export function testInvalidSpaceRename(): void {
   );
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create space
@@ -382,8 +382,8 @@ export function testValidDeleteSpace(): void {
   console.log("\n🧪 TEST CASE 9: Delete empty space");
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create space
@@ -429,8 +429,8 @@ export function testInvalidDeleteSpace(): void {
   );
   console.log("==================================");
 
-  const users = new Users();
-  const spaces_test = new Spaces();
+  const users = new UserConcept();
+  const spaces_test = new SpaceConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create space

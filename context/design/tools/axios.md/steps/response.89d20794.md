@@ -1,15 +1,14 @@
-[@api-spec-bundle](api-spec-bundle.md)
-[@BundleConcept](../../src/concepts/Bundle/BundleConcept.ts)
+---
+timestamp: 'Tue Oct 28 2025 01:14:55 GMT-0400 (Eastern Daylight Time)'
+parent: '[[..\20251028_011455.c874c356.md]]'
+content_id: 89d20794d392104979c488edf7060415d04a0bcd790cc6dd1e44327623cd7f83
+---
 
-# prompt
-how would I use axios in typescript to code up the api spec above given the concept implementation i've already written
-
-give me a file for the bundle-api-client.ts and another for the bundle-api-models.ts, similar in format and type to user-api-client and user-api-models
 # response:
 
 Okay, here are the `bundle-api-models.ts` and `bundle-api-client.ts` files based on your API specification and similar in structure to typical client implementations.
 
----
+***
 
 ### `bundle-api-models.ts`
 
@@ -104,7 +103,7 @@ export interface CreateBundleResponse {
 export type GetBundlesResponse = Bundle[];
 ```
 
----
+***
 
 ### `bundle-api-client.ts`
 
@@ -300,81 +299,81 @@ export class BundleApiClient {
 }
 ```
 
----
+***
 
 ### How to use it:
 
-1.  **Save the files:**
-    *   Save the first block as `bundle-api-models.ts`.
-    *   Save the second block as `bundle-api-client.ts`.
-    *   Make sure both files are in the same directory, or adjust the import path in `bundle-api-client.ts`.
+1. **Save the files:**
+   * Save the first block as `bundle-api-models.ts`.
+   * Save the second block as `bundle-api-client.ts`.
+   * Make sure both files are in the same directory, or adjust the import path in `bundle-api-client.ts`.
 
-2.  **Install Axios:**
-    ```bash
-    npm install axios
-    npm install --save-dev @types/axios # for TypeScript typings
-    ```
+2. **Install Axios:**
+   ```bash
+   npm install axios
+   npm install --save-dev @types/axios # for TypeScript typings
+   ```
 
-3.  **Example Usage:**
+3. **Example Usage:**
 
-    ```typescript
-    import { BundleApiClient } from './bundle-api-client';
+   ```typescript
+   import { BundleApiClient } from './bundle-api-client';
 
-    const API_BASE_URL = 'http://localhost:3000'; // Replace with your actual backend URL
-    const bundleApiClient = new BundleApiClient(API_BASE_URL);
+   const API_BASE_URL = 'http://localhost:3000'; // Replace with your actual backend URL
+   const bundleApiClient = new BundleApiClient(API_BASE_URL);
 
-    async function testBundleOperations() {
-      const userId = 'user123';
-      const bundleName = 'MyPhotoCollection';
-      const itemId1 = 'item001';
-      const itemId2 = 'item002';
+   async function testBundleOperations() {
+     const userId = 'user123';
+     const bundleName = 'MyPhotoCollection';
+     const itemId1 = 'item001';
+     const itemId2 = 'item002';
 
-      try {
-        console.log('--- Creating a bundle ---');
-        const newBundle = await bundleApiClient.createBundle({ user: userId, name: bundleName });
-        console.log('Bundle created:', newBundle);
+     try {
+       console.log('--- Creating a bundle ---');
+       const newBundle = await bundleApiClient.createBundle({ user: userId, name: bundleName });
+       console.log('Bundle created:', newBundle);
 
-        console.log('--- Adding items to bundle ---');
-        await bundleApiClient.addItemToBundle({ user: userId, item: itemId1, bundleName: bundleName });
-        console.log(`Item ${itemId1} added to ${bundleName}`);
-        await bundleApiClient.addItemToBundle({ user: userId, item: itemId2, bundleName: bundleName });
-        console.log(`Item ${itemId2} added to ${bundleName}`);
+       console.log('--- Adding items to bundle ---');
+       await bundleApiClient.addItemToBundle({ user: userId, item: itemId1, bundleName: bundleName });
+       console.log(`Item ${itemId1} added to ${bundleName}`);
+       await bundleApiClient.addItemToBundle({ user: userId, item: itemId2, bundleName: bundleName });
+       console.log(`Item ${itemId2} added to ${bundleName}`);
 
-        console.log('--- Getting all bundles ---');
-        const allBundles = await bundleApiClient.getBundles();
-        console.log('All bundles:', allBundles);
-        // You would typically filter `allBundles` by owner to see only user123's bundles
-        const myBundles = allBundles.filter(b => b.owner === userId);
-        console.log('My bundles:', myBundles);
+       console.log('--- Getting all bundles ---');
+       const allBundles = await bundleApiClient.getBundles();
+       console.log('All bundles:', allBundles);
+       // You would typically filter `allBundles` by owner to see only user123's bundles
+       const myBundles = allBundles.filter(b => b.owner === userId);
+       console.log('My bundles:', myBundles);
 
-        console.log('--- Removing an item from bundle ---');
-        await bundleApiClient.removeItemFromBundle({ user: userId, item: itemId1, bundleName: bundleName });
-        console.log(`Item ${itemId1} removed from ${bundleName}`);
+       console.log('--- Removing an item from bundle ---');
+       await bundleApiClient.removeItemFromBundle({ user: userId, item: itemId1, bundleName: bundleName });
+       console.log(`Item ${itemId1} removed from ${bundleName}`);
 
-        console.log('--- Getting all bundles again to verify removal ---');
-        const updatedBundles = await bundleApiClient.getBundles();
-        console.log('Bundles after item removal:', updatedBundles.filter(b => b.owner === userId));
+       console.log('--- Getting all bundles again to verify removal ---');
+       const updatedBundles = await bundleApiClient.getBundles();
+       console.log('Bundles after item removal:', updatedBundles.filter(b => b.owner === userId));
 
 
-        console.log('--- Deleting the bundle ---');
-        await bundleApiClient.deleteBundle({ user: userId, name: bundleName });
-        console.log(`Bundle '${bundleName}' deleted.`);
+       console.log('--- Deleting the bundle ---');
+       await bundleApiClient.deleteBundle({ user: userId, name: bundleName });
+       console.log(`Bundle '${bundleName}' deleted.`);
 
-        console.log('--- Getting all bundles one last time ---');
-        const remainingBundles = await bundleApiClient.getBundles();
-        console.log('Remaining bundles:', remainingBundles.filter(b => b.owner === userId));
+       console.log('--- Getting all bundles one last time ---');
+       const remainingBundles = await bundleApiClient.getBundles();
+       console.log('Remaining bundles:', remainingBundles.filter(b => b.owner === userId));
 
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          // You can access the specific error response here
-          console.error('API Error Response Data:', error.response?.data);
-        } else {
-          console.error('An unexpected error occurred:', error);
-        }
-      }
-    }
+     } catch (error) {
+       if (axios.isAxiosError(error)) {
+         // You can access the specific error response here
+         console.error('API Error Response Data:', error.response?.data);
+       } else {
+         console.error('An unexpected error occurred:', error);
+       }
+     }
+   }
 
-    testBundleOperations();
-    ```
+   testBundleOperations();
+   ```
 
 This client provides a robust, type-safe way to interact with your Bundle API, with clear error handling and a structured approach to defining your API's data models.

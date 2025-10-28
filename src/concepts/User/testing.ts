@@ -4,7 +4,7 @@
  * Demonstrates all user actions
  */
 
-import { Users } from "@concepts/User/implementation.ts";
+import UserConcept from "./UserConcept.ts";
 
 /**
  * Test case 1: Register unique user
@@ -14,7 +14,7 @@ export function testValidRegister(): void {
   console.log("\n🧪 TEST CASE 1: Register unique user");
   console.log("==================================");
 
-  const users_test = new Users();
+  const users_test = new UserConcept();
 
   // Register a user
   console.log("📝 Registering user...");
@@ -39,7 +39,7 @@ export function testInvalidRegister(): void {
   console.log("\n🧪 TEST CASE 2: Register duplicate user");
   console.log("==================================");
 
-  const users_test = new Users();
+  const users_test = new UserConcept();
 
   // Register a user
   console.log("📝 Registering user...");
@@ -66,7 +66,7 @@ export function testValidAuthentication(): void {
   console.log("\n🧪 TEST CASE 3: Authenticate user correctly");
   console.log("==================================");
 
-  const users_test = new Users();
+  const users_test = new UserConcept();
 
   // Register a user
   const _ = users_test.registerUser("hanna", "asdf123");
@@ -88,7 +88,7 @@ export function testInvalidAuthentication(): void {
   console.log("\n🧪 TEST CASE 4: Authenticate user incorrectly");
   console.log("==================================");
 
-  const users_test = new Users();
+  const users_test = new UserConcept();
 
   // Register a user
   const _ = users_test.registerUser("hanna", "asdf123");
@@ -105,7 +105,7 @@ export function testNonexistentUserAuthentication(): void {
   console.log("\n🧪 TEST CASE 5: Authenticate invalid user");
   console.log("==================================");
 
-  const users_test = new Users();
+  const users_test = new UserConcept();
 
   // Register a user
   const _ = users_test.registerUser("hanna", "asdf123");

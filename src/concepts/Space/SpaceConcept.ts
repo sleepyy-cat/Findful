@@ -9,7 +9,7 @@ export interface Space {
   children?: Space[];
 }
 
-export default class Spaces {
+export default class SpaceConcept {
   private spaces: Space[] = [];
   createSpace(
     owner: User,

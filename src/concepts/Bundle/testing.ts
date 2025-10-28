@@ -4,9 +4,9 @@
  * Demonstrates all bundle actions
  */
 
-import { Users } from "@concepts/User/implementation.ts";
-import { Items } from "@concepts/Item/implementation.ts";
-import { Bundles } from "@concepts/Bundle/implementation.ts";
+import UserConcept from "../User/UserConcept.ts";
+import ItemConcept from "../Item/ItemConcept.ts";
+import BundleConcept from "./BundleConcept.ts";
 
 /**
  * Test case 1: Create unique bundle
@@ -16,8 +16,8 @@ export function testCreateUniqueBundle(): void {
   console.log("\n🧪 TEST CASE 1: Create unique bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const bundles_test = new BundleConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create a bundle
@@ -43,8 +43,8 @@ export function testCreateDuplicateBundle(): void {
   console.log("\n🧪 TEST CASE 2: Create duplicate bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const bundles_test = new BundleConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create a bundle
@@ -76,8 +76,8 @@ export function testDeleteValidBundle(): void {
   console.log("\n🧪 TEST CASE 3: Delete valid bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const bundles_test = new BundleConcept();
   // Register a user
   const user = users.registerUser("hanna", "asdf123");
   if (user) {
@@ -105,8 +105,8 @@ export function testDeleteNonexistentBundle(): void {
   console.log("\n🧪 TEST CASE 4: Delete nonexistent bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const bundles_test = new BundleConcept();
   // Register a user
   const user = users.registerUser("hanna", "asdf123");
   if (user) {
@@ -131,8 +131,8 @@ export function testDeleteOtherUsersBundle(): void {
   console.log("\n🧪 TEST CASE 5: Delete other user's bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const bundles_test = new BundleConcept();
   // Register two users
   const user1 = users.registerUser("hanna", "asdf123");
   const user2 = users.registerUser("cat", "asdf321");
@@ -158,9 +158,9 @@ export function testAddValidItem(): void {
   console.log("\n🧪 TEST CASE 6: Add new item to bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const bundles_test = new BundleConcept();
   // Register a user
   const user = users.registerUser("hanna", "asdf123");
   if (user) {
@@ -192,9 +192,9 @@ export function testAddDuplicateItem(): void {
   console.log("\n🧪 TEST CASE 7: Add duplicate item to bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const bundles_test = new BundleConcept();
   // Register a user
   const user = users.registerUser("hanna", "asdf123");
   if (user) {
@@ -225,9 +225,9 @@ export function testDeleteValidItem(): void {
   console.log("\n🧪 TEST CASE 8: Delete valid item from bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const bundles_test = new BundleConcept();
   // Register a user
   const user = users.registerUser("hanna", "asdf123");
   if (user) {
@@ -262,9 +262,9 @@ export function testDeleteNonexistentItem(): void {
   console.log("\n🧪 TEST CASE 9: Delete nonexistent item from bundle");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
-  const bundles_test = new Bundles();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
+  const bundles_test = new BundleConcept();
   // Register a user
   const user = users.registerUser("hanna", "asdf123");
   if (user) {

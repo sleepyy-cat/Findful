@@ -4,7 +4,7 @@ export interface User {
   password: string;
 }
 
-export default class Users {
+export default class UserConcept {
   private users: User[] = [];
 
   registerUser(

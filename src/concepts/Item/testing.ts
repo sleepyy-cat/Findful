@@ -4,8 +4,9 @@
  * Demonstrates all item actions
  */
 
-import { Users } from "@concepts/User/implementation.ts";
-import { Item, Items } from "@concepts/Item/implementation.ts";
+import UserConcept from "../User/UserConcept.ts";
+import { Item } from "./ItemConcept.ts";
+import ItemConcept from "./ItemConcept.ts";
 
 /**
  * Test case 1: Create unique item
@@ -15,8 +16,8 @@ export function testCreateUniqueItem(): void {
   console.log("\n🧪 TEST CASE 1: Create unique item");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item
@@ -47,8 +48,8 @@ export function testCreateDuplicateItem(): void {
   console.log("\n🧪 TEST CASE 2: Create duplicate item");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item
@@ -88,8 +89,8 @@ export function testValidDeleteItem(): void {
   console.log("\n🧪 TEST CASE 3: Delete existing item");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item
@@ -125,8 +126,8 @@ export function testInvalidDeleteNonexistentItem(): void {
   );
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item
@@ -163,8 +164,8 @@ export function testInvalidDeleteOtherUsersItem(): void {
   console.log("\n🧪 TEST CASE 5: Delete no perms item");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
   // Register two users
   const user1 = users.registerUser("hanna", "asdf123");
   const user2 = users.registerUser("cat", "asdf321");
@@ -197,8 +198,8 @@ export function testValidUpdateItem(): void {
   console.log("\n🧪 TEST CASE 6: Update unique item");
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create an item
@@ -252,8 +253,8 @@ export function testInvalidUpdateItem(): void {
   );
   console.log("==================================");
 
-  const users = new Users();
-  const items_test = new Items();
+  const users = new UserConcept();
+  const items_test = new ItemConcept();
   // Register a user
   const user1 = users.registerUser("hanna", "asdf123");
   // Create two items
